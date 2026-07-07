@@ -70,11 +70,38 @@
     font-size:12.5px;
     letter-spacing:0.04em;
   }
-  .topbar .brand{display:flex; align-items:center; gap:10px; color:var(--text); font-weight:600;}
+  .topbar .brand{display:flex; align-items:center; gap:10px; color:var(--text); font-weight:600; flex-shrink:0;}
   .topbar .dot{width:8px; height:8px; border-radius:50%; background:var(--trace); box-shadow:0 0 8px var(--trace);}
-  .topbar .readout{display:flex; align-items:center; gap:18px; color:var(--muted);}
+  .topbar .readout{display:flex; align-items:center; gap:18px; color:var(--muted); flex-shrink:0;}
   .topbar .readout .val{color:var(--trace); font-weight:600;}
-  @media (max-width:640px){ .topbar .readout{display:none;} }
+
+  .navlinks{display:flex; align-items:center; gap:24px;}
+  .navlinks a{
+    color:var(--muted); font-size:11.5px; letter-spacing:0.08em; text-transform:uppercase;
+    padding:4px 2px; border-bottom:1px solid transparent; transition:color .15s, border-color .15s;
+  }
+  .navlinks a:hover{color:var(--text); text-decoration:none;}
+  .navlinks a.active{color:var(--trace); border-color:var(--trace);}
+
+  .nav-toggle{
+    display:none; background:none; border:1px solid var(--line); border-radius:5px;
+    color:var(--text); width:32px; height:32px; cursor:pointer; font-family:var(--mono); font-size:16px;
+    align-items:center; justify-content:center;
+  }
+
+  @media (max-width:900px){
+    .topbar .readout{display:none;}
+    .navlinks{
+      position:fixed; top:49px; left:0; right:0; z-index:49;
+      flex-direction:column; align-items:flex-start; gap:2px;
+      background:rgba(5,16,13,0.98); border-bottom:1px solid var(--line);
+      padding:8px 28px 18px; transform:translateY(-8px); opacity:0; pointer-events:none;
+      transition:transform .2s ease, opacity .2s ease;
+    }
+    .navlinks.open{transform:translateY(0); opacity:1; pointer-events:auto;}
+    .navlinks a{padding:10px 0; width:100%; border-bottom:1px solid var(--line);}
+    .nav-toggle{display:flex;}
+  }
 
   /* ---------- section shell ---------- */
   section{position:relative; z-index:1; padding:120px 0 40px;}
