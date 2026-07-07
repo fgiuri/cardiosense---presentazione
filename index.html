@@ -218,8 +218,7 @@
 
   /* ---------- demo section ---------- */
   .demo-grid{display:flex; flex-direction:column; gap:20px;}
-  .shot-row{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
-  @media (max-width:860px){ .shot-row{grid-template-columns:1fr;} }
+  .shot-row{display:flex; flex-direction:column; gap:20px;}
   .monitor-frame{
     background:var(--bg-panel); border:1px solid var(--line); border-radius:10px; overflow:hidden;
   }
@@ -235,9 +234,11 @@
     background:
       repeating-linear-gradient(135deg, transparent, transparent 10px, rgba(150,209,192,0.04) 10px, rgba(150,209,192,0.04) 11px);
   }
-  .shot-slot{aspect-ratio:4/3;}
+  .shot-slot{aspect-ratio:16/9; background:#080f0d;}
   .video-slot svg, .shot-slot svg{width:34px; height:34px; opacity:0.6;}
-  .video-slot video, .shot-slot img{width:100%; height:100%; object-fit:cover; display:block;}
+  .video-slot video, .shot-slot img{width:100%; height:100%; object-fit:contain; display:block;}
+  .shot-slot a{display:block; width:100%; height:100%; cursor:zoom-in;}
+  .shot-hint{font-size:11px; color:var(--muted-dim); font-family:var(--mono); padding:8px 14px 12px; text-align:right;}
 
   /* ---------- repos ---------- */
   .repo-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:16px;}
@@ -402,14 +403,20 @@
       <div class="monitor-frame">
         <div class="mf-head"><span>anomalia.png</span></div>
         <div class="shot-slot">
-          <img src="img/anomalia.png" alt="Screenshot — coda anomalie">
+          <a href="img/anomalia.png" target="_blank" rel="noopener">
+            <img src="img/anomalia.png" alt="Screenshot — coda anomalie">
+          </a>
         </div>
+        <div class="shot-hint">clicca per ingrandire ↗</div>
       </div>
       <div class="monitor-frame">
         <div class="mf-head"><span>validazione.png</span></div>
         <div class="shot-slot">
-          <img src="img/validazione.png" alt="Screenshot — modal di validazione">
+          <a href="img/validazione.png" target="_blank" rel="noopener">
+            <img src="img/validazione.png" alt="Screenshot — modal di validazione">
+          </a>
         </div>
+        <div class="shot-hint">clicca per ingrandire ↗</div>
       </div>
     </div>
   </div>
