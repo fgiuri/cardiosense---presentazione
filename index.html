@@ -235,6 +235,7 @@
   }
   .shot-slot{aspect-ratio:4/3;}
   .video-slot svg, .shot-slot svg{width:34px; height:34px; opacity:0.6;}
+  .video-slot video, .shot-slot img{width:100%; height:100%; object-fit:cover; display:block;}
   .shot-stack{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
 
   /* ---------- repos ---------- */
@@ -315,7 +316,7 @@
     <p class="sub">Un sistema IoT closed-loop che ascolta il cuore di un paziente ventiquattr'ore su ventiquattro, e mette l'intelligenza artificiale e il giudizio clinico del medico a lavorare insieme, in tempo reale.</p>
     <div class="vitals">
       <div class="vital"><div class="label">ECG</div><div class="value">Normale</div></div>
-      <div class="vital"><div class="label">Postura</div><div class="value">Seduto</div></div>
+      <div class="vital"><div class="label">Postura</div><div class="value">Camminata</div></div>
       <div class="vital"><div class="label">Temp.</div><div class="value">36.6°C</div></div>
       <div class="vital alert"><div class="label">Episodi oggi</div><div class="value">1 in attesa</div></div>
     </div>
@@ -388,7 +389,7 @@
       <rect class="node" x="700" y="25" width="340" height="100"/>
       <text class="lbl" x="720" y="57">App Paziente (Kivy)</text>
       <text class="lbl-sm" x="720" y="80">+ layer MQTT: mqtt_bridge.py</text>
-      <text class="lbl-sm" x="720" y="100">repo: patient-app</text>
+      <text class="lbl-sm" x="720" y="100">repo: patient-app · questo repo</text>
 
       <path class="conn" d="M590,78 L700,75" marker-end="url(#arrow)"/>
       <text class="lbl-sm" x="603" y="66">USB seriale</text>
@@ -473,23 +474,20 @@
     <div class="monitor-frame">
       <div class="mf-head"><span>demo_end_to_end.mp4</span><div class="dots"><span></span><span></span><span></span></div></div>
       <div class="video-slot">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3l14 9-14 9V3z"/></svg>
-        <span>Video dimostrativo —<br>sostituisci con &lt;video src="demo.mp4" controls&gt;</span>
+        <video src="demo_end_to_end.mp4" controls playsinline></video>
       </div>
     </div>
     <div class="shot-stack">
       <div class="monitor-frame">
         <div class="mf-head"><span>anomalia.png</span></div>
         <div class="shot-slot">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Screenshot — coda anomalie</span>
+          <img src="anomalia.png" alt="Screenshot — coda anomalie">
         </div>
       </div>
       <div class="monitor-frame">
         <div class="mf-head"><span>validazione.png</span></div>
         <div class="shot-slot">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
-          <span>Screenshot — modal di validazione</span>
+          <img src="validazione.png" alt="Screenshot — modal di validazione">
         </div>
       </div>
     </div>
@@ -539,9 +537,9 @@
     </div>
     <div class="collab">In collaborazione con IDA Lab — Università del Salento e IIT — Istituto Italiano di Tecnologia.</div>
   </div>
-  <!-- <div class="disclaimer">
+  <div class="disclaimer">
     CardioSense è un prototipo sviluppato a scopo accademico e dimostrativo. Non è certificato come dispositivo medico e non è destinato all'uso clinico reale.
-  </div> -->
+  </div>
 </footer>
 
 <script>
