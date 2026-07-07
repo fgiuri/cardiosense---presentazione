@@ -69,13 +69,11 @@ Sito statico **single-page** (`index.html`), HTML/CSS/JS in un unico file, senza
 | **Dimostrazione** | Video/screenshot del sistema in funzione |
 | **Repository** | Link ai tre repository del progetto |
 
----
+## 🔗 Demo online
 
-## Link GitHub Page
+**[Vedi il sito → unisalento-idalab-iotcourse-2025-2026.github.io/wot-project-2025-2026-presentation-giuri](https://unisalento-idalab-iotcourse-2025-2026.github.io/wot-project-2025-2026-presentation-giuri/)**
 
-   `https://unisalento-idalab-iotcourse-2025-2026.github.io/wot-project-2025-2026-presentation-giuri/`
-
----
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-live-2ee6b0?style=flat-square&logo=github)](https://unisalento-idalab-iotcourse-2025-2026.github.io/wot-project-2025-2026-presentation-giuri/)
 
 ## Contesto accademico
 
