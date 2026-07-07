@@ -199,11 +199,6 @@
     padding:28px 20px; overflow-x:auto;
   }
   .arch-frame svg{display:block; margin:0 auto; min-width:760px; width:100%; height:auto;}
-  .arch-legend{
-    display:flex; flex-wrap:wrap; gap:20px; margin-top:22px; font-family:var(--mono); font-size:12px; color:var(--muted);
-  }
-  .arch-legend .swatch{display:inline-flex; align-items:center; gap:8px;}
-  .arch-legend .chip{width:12px; height:12px; border-radius:3px; display:inline-block;}
 
   /* ---------- stack grid ---------- */
   .stack-grid{
@@ -257,13 +252,23 @@
   .repo-card p{margin:0; font-size:13.5px; color:var(--muted); flex-grow:1;}
   .repo-card a.link{font-family:var(--mono); font-size:12.5px;}
   .doc-line{
-    display:flex; align-items:center; gap:10px; padding:16px 20px; background:var(--bg-panel);
+    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px;
+    padding:16px 20px; background:var(--bg-panel);
     border:1px solid var(--line); border-radius:8px; font-size:14px; color:var(--muted);
   }
+  .doc-download{
+    display:inline-flex; align-items:center; gap:8px; flex-shrink:0;
+    font-family:var(--mono); font-size:12.5px; font-weight:600; letter-spacing:0.03em;
+    color:var(--bg); background:var(--trace);
+    padding:9px 16px; border-radius:6px; white-space:nowrap;
+    transition:opacity .15s;
+  }
+  .doc-download:hover{opacity:0.85; text-decoration:none;}
 
   /* ---------- footer ---------- */
+  #repository{padding-bottom:100px;}
   footer{
-    padding:60px 0 40px; border-top:1px solid var(--line); margin-top:40px;
+    padding:80px 0 40px; border-top:1px solid var(--line); margin-top:100px;
   }
   .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px;}
   footer .author{font-family:var(--mono); font-size:15px;}
@@ -285,10 +290,18 @@
 
 <div class="topbar">
   <div class="brand"><span class="dot"></span> CARDIOSENSE</div>
+  <nav class="navlinks" id="navlinks">
+    <a href="#panoramica">Progetto</a>
+    <a href="#architettura">Architettura</a>
+    <a href="#stack">Stack</a>
+    <a href="#demo">Demo</a>
+    <a href="#repository">Repository</a>
+  </nav>
   <div class="readout">
     <span>HR <span class="val" id="hrVal">072</span> BPM</span>
     <span>CH.01 ECG · CH.02 ACC/GYRO · CH.03 TEMP</span>
   </div>
+  <button class="nav-toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false">☰</button>
 </div>
 
 <!-- ============ HERO ============ -->
@@ -344,94 +357,87 @@
   <p class="lede">Tre repository, tre responsabilità nette: acquisizione, elaborazione/persistenza, presentazione. Il collante è un broker MQTT su TLS.</p>
 
   <div class="arch-frame">
-    <svg viewBox="0 0 1180 600" role="img" aria-label="Diagramma architetturale del sistema CardioSense">
+    <svg viewBox="0 0 1320 830" role="img" aria-label="Diagramma architetturale del sistema CardioSense">
       <defs>
         <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
           <path d="M0,0 L8,3 L0,6 Z" fill="#5a8a7c"/>
         </marker>
       </defs>
       <style>
-        .node{fill:#0b1c19; stroke:#2c4a43; stroke-width:1.4; rx:8;}
-        .node-this{stroke:#2ee6b0; stroke-width:1.8;}
-        .lbl{font-family:'IBM Plex Mono',monospace; fill:#eaf6f1; font-size:13px;}
-        .lbl-sm{font-family:'IBM Plex Mono',monospace; fill:#7fa89b; font-size:10.5px;}
+        .node{fill:#0b1c19; stroke:#2c4a43; stroke-width:1.4; rx:10;}
+        .lbl{font-family:'IBM Plex Mono',monospace; fill:#eaf6f1; font-size:16px; font-weight:600;}
+        .lbl-sm{font-family:'IBM Plex Mono',monospace; fill:#7fa89b; font-size:12.5px;}
         .conn{stroke:#5a8a7c; stroke-width:1.3; fill:none;}
         .conn-dash{stroke-dasharray:4 4;}
       </style>
 
       <!-- wearable -->
-      <rect class="node" x="40" y="30" width="220" height="60"/>
-      <text class="lbl" x="60" y="55">Board sensoristica IIT</text>
-      <text class="lbl-sm" x="60" y="74">ECG · IMU 6 assi · Temp.</text>
+      <rect class="node" x="40" y="40" width="280" height="76"/>
+      <text class="lbl" x="60" y="72">Board sensoristica IIT</text>
+      <text class="lbl-sm" x="60" y="96">ECG · IMU 6 assi · Temp.</text>
 
       <!-- dongle -->
-      <rect class="node" x="330" y="30" width="200" height="60"/>
-      <text class="lbl" x="350" y="55">Dongle nRF52840</text>
-      <text class="lbl-sm" x="350" y="74">BLE · USB</text>
+      <rect class="node" x="370" y="40" width="220" height="76"/>
+      <text class="lbl" x="390" y="72">Dongle nRF52840</text>
+      <text class="lbl-sm" x="390" y="96">BLE · USB</text>
 
-      <path class="conn" d="M260,60 L330,60" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="266" y="52">BLE</text>
+      <path class="conn" d="M320,78 L370,78" marker-end="url(#arrow)"/>
+      <text class="lbl-sm" x="322" y="66">BLE</text>
 
-      <!-- app paziente (this repo) -->
-      <rect class="node node-this" x="620" y="20" width="260" height="80"/>
-      <text class="lbl" x="640" y="48">App Paziente (Kivy)</text>
-      <text class="lbl-sm" x="640" y="66">+ layer MQTT: mqtt_bridge.py</text>
-      <text class="lbl-sm" x="640" y="82" fill="#2ee6b0">repo: patient-app · QUESTO REPO</text>
+      <!-- app paziente (questo repo) -->
+      <rect class="node" x="640" y="25" width="340" height="100"/>
+      <text class="lbl" x="660" y="57">App Paziente (Kivy)</text>
+      <text class="lbl-sm" x="660" y="80">+ layer MQTT: mqtt_bridge.py</text>
+      <text class="lbl-sm" x="660" y="100">repo: patient-app · questo repo</text>
 
-      <path class="conn" d="M530,60 L620,60" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="536" y="52">USB serial</text>
+      <path class="conn" d="M590,78 L640,75" marker-end="url(#arrow)"/>
+      <text class="lbl-sm" x="598" y="66">USB seriale</text>
 
       <!-- broker -->
-      <rect class="node" x="470" y="180" width="240" height="70"/>
-      <text class="lbl" x="490" y="208">Broker Mosquitto</text>
-      <text class="lbl-sm" x="490" y="228">8883 TLS · 9002 WSS</text>
-      <text class="lbl-sm" x="490" y="244" fill="#f2b632">cardiosense/dati · /allarmi · /validazioni</text>
+      <rect class="node" x="470" y="260" width="420" height="100"/>
+      <text class="lbl" x="490" y="292">Broker Mosquitto</text>
+      <text class="lbl-sm" x="490" y="315">8883 TLS · 9002 WSS</text>
+      <text class="lbl-sm" x="490" y="335" fill="#f2b632">cardiosense/dati · /allarmi · /validazioni</text>
 
-      <path class="conn" d="M750,100 L640,180" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="700" y="145">publish (1 msg/s)</text>
-      <path class="conn conn-dash" d="M620,180 L680,100" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="586" y="145" fill="#f2b632">allarmi/validazioni</text>
+      <path class="conn" d="M900,125 L600,260" marker-end="url(#arrow)"/>
+      <text class="lbl-sm" x="740" y="195">publish (1 msg/s)</text>
+      <path class="conn conn-dash" d="M560,260 L820,125" marker-end="url(#arrow)"/>
+      <text class="lbl-sm" x="560" y="230" fill="#f2b632">allarmi/validazioni</text>
 
       <!-- subscriber / classifiers -->
-      <rect class="node" x="140" y="320" width="270" height="90"/>
-      <text class="lbl" x="160" y="348">mqtt_subscriber.py</text>
-      <text class="lbl-sm" x="160" y="368">ECG · Postura · Temp Classifier</text>
-      <text class="lbl-sm" x="160" y="384" fill="#7fa89b">repo: backend</text>
+      <rect class="node" x="140" y="480" width="320" height="100"/>
+      <text class="lbl" x="160" y="512">mqtt_subscriber.py</text>
+      <text class="lbl-sm" x="160" y="535">ECG · Postura · Temp Classifier</text>
+      <text class="lbl-sm" x="160" y="555">repo: backend</text>
 
-      <path class="conn" d="M470,225 L410,340" marker-end="url(#arrow)"/>
+      <path class="conn" d="M550,360 L300,480" marker-end="url(#arrow)"/>
 
       <!-- db -->
-      <rect class="node" x="140" y="460" width="270" height="60"/>
-      <text class="lbl" x="160" y="485">MongoDB · MySQL</text>
-      <text class="lbl-sm" x="160" y="504">annotazioni · profili</text>
-      <path class="conn" d="M275,410 L275,460" marker-end="url(#arrow)"/>
+      <rect class="node" x="140" y="640" width="240" height="80"/>
+      <text class="lbl" x="160" y="672">MongoDB · MySQL</text>
+      <text class="lbl-sm" x="160" y="694">annotazioni · profili</text>
+      <path class="conn" d="M300,580 L260,640" marker-end="url(#arrow)"/>
 
       <!-- retrain -->
-      <rect class="node" x="40" y="560" width="200" height="40"/>
-      <text class="lbl-sm" x="58" y="584">retrain_scheduler.py — notturno</text>
-      <path class="conn conn-dash" d="M180,560 L180,410" marker-end="url(#arrow)"/>
+      <rect class="node" x="40" y="740" width="320" height="48"/>
+      <text class="lbl-sm" x="60" y="770">retrain_scheduler.py — notturno</text>
+      <path class="conn conn-dash" d="M200,740 L300,580" marker-end="url(#arrow)"/>
 
       <!-- fastapi -->
-      <rect class="node" x="470" y="320" width="240" height="90"/>
-      <text class="lbl" x="490" y="348">fastapi_server.py</text>
-      <text class="lbl-sm" x="490" y="368">REST API · JWT / codice</text>
-      <text class="lbl-sm" x="490" y="384" fill="#7fa89b">repo: backend</text>
-      <path class="conn" d="M590,250 L590,320" marker-end="url(#arrow)"/>
+      <rect class="node" x="520" y="480" width="260" height="100"/>
+      <text class="lbl" x="540" y="512">fastapi_server.py</text>
+      <text class="lbl-sm" x="540" y="535">REST API · JWT / codice</text>
+      <text class="lbl-sm" x="540" y="555">repo: backend</text>
+      <path class="conn" d="M680,360 L650,480" marker-end="url(#arrow)"/>
 
       <!-- dashboard -->
-      <rect class="node node-this" x="830" y="320" width="260" height="90" style="stroke:#5a8a7c"/>
-      <text class="lbl" x="850" y="348">Dashboard Medico</text>
-      <text class="lbl-sm" x="850" y="368">React (Vite) · WebSocket + REST</text>
-      <text class="lbl-sm" x="850" y="384" fill="#7fa89b">repo: dashboard</text>
-      <path class="conn" d="M710,340 L830,355" marker-end="url(#arrow)"/>
-      <path class="conn" d="M709,220 L900,320" marker-end="url(#arrow)"/>
+      <rect class="node" x="940" y="480" width="340" height="100"/>
+      <text class="lbl" x="960" y="512">Dashboard Medico</text>
+      <text class="lbl-sm" x="960" y="535">React (Vite) · WebSocket + REST</text>
+      <text class="lbl-sm" x="960" y="555">repo: dashboard</text>
+      <path class="conn" d="M780,520 L940,520" marker-end="url(#arrow)"/>
+      <path class="conn" d="M890,300 L1100,480" marker-end="url(#arrow)"/>
     </svg>
-  </div>
-
-  <div class="arch-legend">
-    <span class="swatch"><span class="chip" style="background:#2ee6b0"></span> Componente descritto in questo repository</span>
-    <span class="swatch"><span class="chip" style="background:#0b1c19; border:1px solid #2c4a43"></span> Componente in repository separato</span>
-    <span class="swatch"><span class="chip" style="background:#f2b632"></span> Canale di notifica in tempo reale</span>
   </div>
 </section>
 
@@ -518,7 +524,10 @@
       <a class="link" href="https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-patient-app-giuri">→ github.com/…patient-app-giuri</a>
     </div>
   </div>
-  <div class="doc-line">📄 Documentazione completa del progetto disponibile nella relazione consegnata per l'esame.</div>
+  <div class="doc-line">
+    <span>📄 Documentazione completa del progetto — relazione consegnata per l'esame.</span>
+    <a class="doc-download" href="documentazione.pdf" download>⬇ Scarica PDF</a>
+  </div>
 </section>
 
 <!-- ============ FOOTER ============ -->
@@ -546,6 +555,42 @@
       var depth = Math.min(1, window.scrollY / (document.body.scrollHeight - window.innerHeight));
       var bpm = 68 + Math.round(depth * 22); // 68 -> 90 across the page
       hrEl.textContent = String(bpm).padStart(3,'0');
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+  })();
+
+  // Mobile nav toggle
+  (function(){
+    var toggle = document.getElementById('navToggle');
+    var nav = document.getElementById('navlinks');
+    if(!toggle || !nav) return;
+    toggle.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    nav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+
+  // Scroll-spy: evidenzia la voce di menu della sezione visibile
+  (function(){
+    var sections = Array.prototype.slice.call(document.querySelectorAll('section[id]'));
+    var links = Array.prototype.slice.call(document.querySelectorAll('.navlinks a'));
+    if(!sections.length || !links.length) return;
+    function onScroll(){
+      var pos = window.scrollY + 140;
+      var current = sections[0].id;
+      sections.forEach(function(sec){
+        if(sec.offsetTop <= pos) current = sec.id;
+      });
+      links.forEach(function(a){
+        a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+      });
     }
     window.addEventListener('scroll', onScroll, {passive:true});
     onScroll();
