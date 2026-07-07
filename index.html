@@ -199,6 +199,7 @@
     padding:28px 20px; overflow-x:auto;
   }
   .arch-frame svg{display:block; margin:0 auto; min-width:760px; width:100%; height:auto;}
+  .arch-img{display:block; margin:0 auto; width:100%; height:auto; border-radius:6px;}
 
   /* ---------- stack grid ---------- */
   .stack-grid{
@@ -358,87 +359,7 @@
   <p class="lede">Tre repository, tre responsabilità nette: acquisizione, elaborazione/persistenza, presentazione. Il collante è un broker MQTT su TLS.</p>
 
   <div class="arch-frame">
-    <svg viewBox="0 0 1320 830" role="img" aria-label="Diagramma architetturale del sistema CardioSense">
-      <defs>
-        <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto">
-          <path d="M0,0 L8,3 L0,6 Z" fill="#5a8a7c"/>
-        </marker>
-      </defs>
-      <style>
-        .node{fill:#0b1c19; stroke:#2c4a43; stroke-width:1.4; rx:10;}
-        .lbl{font-family:'IBM Plex Mono',monospace; fill:#eaf6f1; font-size:16px; font-weight:600;}
-        .lbl-sm{font-family:'IBM Plex Mono',monospace; fill:#7fa89b; font-size:12.5px;}
-        .conn{stroke:#5a8a7c; stroke-width:1.3; fill:none;}
-        .conn-dash{stroke-dasharray:4 4;}
-      </style>
-
-      <!-- wearable -->
-      <rect class="node" x="40" y="40" width="280" height="76"/>
-      <text class="lbl" x="60" y="72">Board sensoristica IIT</text>
-      <text class="lbl-sm" x="60" y="96">ECG · IMU 6 assi · Temp.</text>
-
-      <!-- dongle -->
-      <rect class="node" x="370" y="40" width="220" height="76"/>
-      <text class="lbl" x="390" y="72">Dongle nRF52840</text>
-      <text class="lbl-sm" x="390" y="96">BLE · USB</text>
-
-      <path class="conn" d="M320,78 L370,78" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="331" y="66">BLE</text>
-
-      <!-- app paziente (questo repo) -->
-      <rect class="node" x="700" y="25" width="340" height="100"/>
-      <text class="lbl" x="720" y="57">App Paziente (Kivy)</text>
-      <text class="lbl-sm" x="720" y="80">+ layer MQTT: mqtt_bridge.py</text>
-      <text class="lbl-sm" x="720" y="100">repo: patient-app · questo repo</text>
-
-      <path class="conn" d="M590,78 L700,75" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="603" y="66">USB seriale</text>
-
-      <!-- broker -->
-      <rect class="node" x="560" y="280" width="420" height="100"/>
-      <text class="lbl" x="580" y="312">Broker Mosquitto</text>
-      <text class="lbl-sm" x="580" y="335">8883 TLS · 9002 WSS</text>
-      <text class="lbl-sm" x="580" y="355" fill="#f2b632">cardiosense/dati · /allarmi · /validazioni</text>
-
-      <path class="conn" d="M760,125 L660,280" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="615" y="205">publish (1 msg/s)</text>
-      <path class="conn conn-dash" d="M860,280 L960,125" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="845" y="205" fill="#f2b632">allarmi/validazioni</text>
-
-      <!-- subscriber / classifiers -->
-      <rect class="node" x="140" y="480" width="320" height="100"/>
-      <text class="lbl" x="160" y="512">mqtt_subscriber.py</text>
-      <text class="lbl-sm" x="160" y="535">ECG · Postura · Temp Classifier</text>
-      <text class="lbl-sm" x="160" y="555">repo: backend</text>
-
-      <path class="conn" d="M620,380 L320,480" marker-end="url(#arrow)"/>
-
-      <!-- db -->
-      <rect class="node" x="140" y="640" width="240" height="80"/>
-      <text class="lbl" x="160" y="672">MongoDB · MySQL</text>
-      <text class="lbl-sm" x="160" y="694">annotazioni · profili</text>
-      <path class="conn" d="M220,580 L200,640" marker-end="url(#arrow)"/>
-
-      <!-- retrain -->
-      <rect class="node" x="40" y="740" width="320" height="48"/>
-      <text class="lbl-sm" x="60" y="770">retrain_scheduler.py — notturno</text>
-      <path class="conn conn-dash" d="M320,740 L340,580" marker-end="url(#arrow)"/>
-
-      <!-- fastapi -->
-      <rect class="node" x="520" y="480" width="260" height="100"/>
-      <text class="lbl" x="540" y="512">fastapi_server.py</text>
-      <text class="lbl-sm" x="540" y="535">REST API · JWT / codice</text>
-      <text class="lbl-sm" x="540" y="555">repo: backend</text>
-      <path class="conn" d="M770,380 L650,480" marker-end="url(#arrow)"/>
-
-      <!-- dashboard -->
-      <rect class="node" x="940" y="480" width="340" height="100"/>
-      <text class="lbl" x="960" y="512">Dashboard Medico</text>
-      <text class="lbl-sm" x="960" y="535">React (Vite) · WebSocket + REST</text>
-      <text class="lbl-sm" x="960" y="555">repo: dashboard</text>
-      <path class="conn" d="M780,520 L940,520" marker-end="url(#arrow)"/>
-      <path class="conn" d="M980,320 L1080,480" marker-end="url(#arrow)"/>
-    </svg>
+    <img src="img/architettura.jpg" alt="Diagramma architetturale del sistema CardioSense" class="arch-img">
   </div>
 </section>
 
@@ -474,20 +395,20 @@
     <div class="monitor-frame">
       <div class="mf-head"><span>demo_end_to_end.mp4</span><div class="dots"><span></span><span></span><span></span></div></div>
       <div class="video-slot">
-        <video src="demo_end_to_end.mp4" controls playsinline></video>
+        <video src="img/demo_end_to_end.mp4" controls playsinline></video>
       </div>
     </div>
     <div class="shot-row">
       <div class="monitor-frame">
         <div class="mf-head"><span>anomalia.png</span></div>
         <div class="shot-slot">
-          <img src="anomalia.png" alt="Screenshot — coda anomalie">
+          <img src="img/anomalia.png" alt="Screenshot — coda anomalie">
         </div>
       </div>
       <div class="monitor-frame">
         <div class="mf-head"><span>validazione.png</span></div>
         <div class="shot-slot">
-          <img src="validazione.png" alt="Screenshot — modal di validazione">
+          <img src="img/validazione.png" alt="Screenshot — modal di validazione">
         </div>
       </div>
     </div>
