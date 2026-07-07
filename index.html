@@ -315,11 +315,11 @@
     <p class="sub">Un sistema IoT closed-loop che ascolta il cuore di un paziente ventiquattr'ore su ventiquattro, e mette l'intelligenza artificiale e il giudizio clinico del medico a lavorare insieme, in tempo reale.</p>
     <div class="vitals">
       <div class="vital"><div class="label">ECG</div><div class="value">Normale</div></div>
-      <div class="vital"><div class="label">Postura</div><div class="value">Corsa</div></div>
+      <div class="vital"><div class="label">Postura</div><div class="value">Seduto</div></div>
       <div class="vital"><div class="label">Temp.</div><div class="value">36.6°C</div></div>
       <div class="vital alert"><div class="label">Episodi oggi</div><div class="value">1 in attesa</div></div>
     </div>
-    <p class="scroll-cue">Scorri</p>
+    <p class="scroll-cue">Scorri per l'architettura del sistema</p>
   </div>
 </header>
 
@@ -382,27 +382,27 @@
       <text class="lbl-sm" x="390" y="96">BLE · USB</text>
 
       <path class="conn" d="M320,78 L370,78" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="322" y="66">BLE</text>
+      <text class="lbl-sm" x="331" y="66">BLE</text>
 
       <!-- app paziente (questo repo) -->
-      <rect class="node" x="640" y="25" width="340" height="100"/>
-      <text class="lbl" x="660" y="57">App Paziente (Kivy)</text>
-      <text class="lbl-sm" x="660" y="80">+ layer MQTT: mqtt_bridge.py</text>
-      <text class="lbl-sm" x="660" y="100">repo: patient-app · questo repo</text>
+      <rect class="node" x="700" y="25" width="340" height="100"/>
+      <text class="lbl" x="720" y="57">App Paziente (Kivy)</text>
+      <text class="lbl-sm" x="720" y="80">+ layer MQTT: mqtt_bridge.py</text>
+      <text class="lbl-sm" x="720" y="100">repo: patient-app · questo repo</text>
 
-      <path class="conn" d="M590,78 L640,75" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="598" y="66">USB seriale</text>
+      <path class="conn" d="M590,78 L700,75" marker-end="url(#arrow)"/>
+      <text class="lbl-sm" x="603" y="66">USB seriale</text>
 
       <!-- broker -->
-      <rect class="node" x="470" y="260" width="420" height="100"/>
-      <text class="lbl" x="490" y="292">Broker Mosquitto</text>
-      <text class="lbl-sm" x="490" y="315">8883 TLS · 9002 WSS</text>
-      <text class="lbl-sm" x="490" y="335" fill="#f2b632">cardiosense/dati · /allarmi · /validazioni</text>
+      <rect class="node" x="560" y="280" width="420" height="100"/>
+      <text class="lbl" x="580" y="312">Broker Mosquitto</text>
+      <text class="lbl-sm" x="580" y="335">8883 TLS · 9002 WSS</text>
+      <text class="lbl-sm" x="580" y="355" fill="#f2b632">cardiosense/dati · /allarmi · /validazioni</text>
 
-      <path class="conn" d="M900,125 L600,260" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="740" y="195">publish (1 msg/s)</text>
-      <path class="conn conn-dash" d="M560,260 L820,125" marker-end="url(#arrow)"/>
-      <text class="lbl-sm" x="560" y="230" fill="#f2b632">allarmi/validazioni</text>
+      <path class="conn" d="M760,125 L660,280" marker-end="url(#arrow)"/>
+      <text class="lbl-sm" x="615" y="205">publish (1 msg/s)</text>
+      <path class="conn conn-dash" d="M860,280 L960,125" marker-end="url(#arrow)"/>
+      <text class="lbl-sm" x="845" y="205" fill="#f2b632">allarmi/validazioni</text>
 
       <!-- subscriber / classifiers -->
       <rect class="node" x="140" y="480" width="320" height="100"/>
@@ -410,25 +410,25 @@
       <text class="lbl-sm" x="160" y="535">ECG · Postura · Temp Classifier</text>
       <text class="lbl-sm" x="160" y="555">repo: backend</text>
 
-      <path class="conn" d="M550,360 L300,480" marker-end="url(#arrow)"/>
+      <path class="conn" d="M620,380 L320,480" marker-end="url(#arrow)"/>
 
       <!-- db -->
       <rect class="node" x="140" y="640" width="240" height="80"/>
       <text class="lbl" x="160" y="672">MongoDB · MySQL</text>
       <text class="lbl-sm" x="160" y="694">annotazioni · profili</text>
-      <path class="conn" d="M300,580 L260,640" marker-end="url(#arrow)"/>
+      <path class="conn" d="M220,580 L200,640" marker-end="url(#arrow)"/>
 
       <!-- retrain -->
       <rect class="node" x="40" y="740" width="320" height="48"/>
       <text class="lbl-sm" x="60" y="770">retrain_scheduler.py — notturno</text>
-      <path class="conn conn-dash" d="M200,740 L300,580" marker-end="url(#arrow)"/>
+      <path class="conn conn-dash" d="M320,740 L340,580" marker-end="url(#arrow)"/>
 
       <!-- fastapi -->
       <rect class="node" x="520" y="480" width="260" height="100"/>
       <text class="lbl" x="540" y="512">fastapi_server.py</text>
       <text class="lbl-sm" x="540" y="535">REST API · JWT / codice</text>
       <text class="lbl-sm" x="540" y="555">repo: backend</text>
-      <path class="conn" d="M680,360 L650,480" marker-end="url(#arrow)"/>
+      <path class="conn" d="M770,380 L650,480" marker-end="url(#arrow)"/>
 
       <!-- dashboard -->
       <rect class="node" x="940" y="480" width="340" height="100"/>
@@ -436,7 +436,7 @@
       <text class="lbl-sm" x="960" y="535">React (Vite) · WebSocket + REST</text>
       <text class="lbl-sm" x="960" y="555">repo: dashboard</text>
       <path class="conn" d="M780,520 L940,520" marker-end="url(#arrow)"/>
-      <path class="conn" d="M890,300 L1100,480" marker-end="url(#arrow)"/>
+      <path class="conn" d="M980,320 L1080,480" marker-end="url(#arrow)"/>
     </svg>
   </div>
 </section>
