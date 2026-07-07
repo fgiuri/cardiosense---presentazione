@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="favicon.svg" width="80" height="80" alt="CardioSense logo">
+
 # CardioSense — Presentazione (GitHub Page)
 
 ### Sistema IoT real-time per il monitoraggio closed-loop di pazienti con scompenso cardiaco
