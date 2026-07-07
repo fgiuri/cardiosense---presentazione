@@ -69,44 +69,11 @@ Sito statico **single-page** (`index.html`), HTML/CSS/JS in un unico file, senza
 | **Dimostrazione** | Video/screenshot del sistema in funzione |
 | **Repository** | Link ai tre repository del progetto |
 
-La pagina non richiede alcuna dipendenza esterna a runtime, ad eccezione dei font **IBM Plex Mono/Sans** caricati da Google Fonts via `<link>` nell'`<head>`.
-
-### Aggiornare i contenuti multimediali
-
-Nella sezione "Dimostrazione", i placeholder tratteggiati vanno sostituiti con gli asset reali:
-
-```html
-<!-- video: sostituire il div .video-slot con -->
-<video src="assets/demo.mp4" controls poster="assets/poster.jpg"></video>
-
-<!-- screenshot: sostituire il div .shot-slot con -->
-<img src="assets/anomalia.png" alt="Coda anomalie in dashboard">
-```
-
-Si consiglia di creare una cartella `assets/` nella root del repository per video e immagini.
-
 ---
 
-## Sviluppo locale
+## Link GitHub Page
 
-Non serve alcuna installazione: essendo un singolo file HTML autocontenuto, è sufficiente aprirlo direttamente nel browser.
-
-```bash
-# oppure, per un piccolo server locale (utile per testare percorsi relativi ad assets/)
-python -m http.server 8000
-# poi apri http://localhost:8000
-```
-
----
-
-## Pubblicazione su GitHub Pages
-
-1. Il repository deve essere **pubblico** (GitHub Pages non è disponibile su repository privati senza piano Enterprise).
-2. `Settings → Pages → Source` → branch `main`, cartella `/ (root)`.
-3. GitHub pubblica automaticamente l'URL:
    `https://unisalento-idalab-iotcourse-2025-2026.github.io/wot-project-2025-2026-presentation-giuri/`
-
-> Durante lo sviluppo il repository può restare privato: GitHub Pages semplicemente non farà la build finché non viene reso pubblico. Consigliato renderlo pubblico solo a ridosso della consegna/presentazione.
 
 ---
 
