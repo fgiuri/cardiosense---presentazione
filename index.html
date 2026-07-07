@@ -216,8 +216,9 @@
   .stack-card p{margin:0; font-size:13px; color:var(--muted);}
 
   /* ---------- demo section ---------- */
-  .demo-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:20px;}
-  @media (max-width:860px){ .demo-grid{grid-template-columns:1fr;} }
+  .demo-grid{display:flex; flex-direction:column; gap:20px;}
+  .shot-row{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:860px){ .shot-row{grid-template-columns:1fr;} }
   .monitor-frame{
     background:var(--bg-panel); border:1px solid var(--line); border-radius:10px; overflow:hidden;
   }
@@ -236,7 +237,6 @@
   .shot-slot{aspect-ratio:4/3;}
   .video-slot svg, .shot-slot svg{width:34px; height:34px; opacity:0.6;}
   .video-slot video, .shot-slot img{width:100%; height:100%; object-fit:cover; display:block;}
-  .shot-stack{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
 
   /* ---------- repos ---------- */
   .repo-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:16px; margin-bottom:16px;}
@@ -477,7 +477,7 @@
         <video src="demo_end_to_end.mp4" controls playsinline></video>
       </div>
     </div>
-    <div class="shot-stack">
+    <div class="shot-row">
       <div class="monitor-frame">
         <div class="mf-head"><span>anomalia.png</span></div>
         <div class="shot-slot">
