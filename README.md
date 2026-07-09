@@ -45,12 +45,12 @@ Questo repository **non contiene codice applicativo**: è la vetrina statica del
 
 ## Repository collegati
 
-| Repository | Contenuto | Stato |
-|---|---|---|
-| **[SmartCare — Backend](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-backend-giuri)** | Backend: classificazione ML, API REST, persistenza, broker MQTT, notifiche | Privato |
-| **[smartcare-dashboard](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-dashboard-giuri)** | Dashboard medico in React (Vite) | Privato |
-| **[IIT BioDataAcq](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-patient-app-giuri)** | App Kivy di acquisizione + layer di integrazione MQTT | Privato |
-| **[wot-project-2025-2026-presentation-giuri](.)** *(questo repo)* | Sito di presentazione (GitHub Page) | **Pubblico** |
+| Repository | Contenuto
+|---|---
+| **[SmartCare — Backend](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-backend-giuri)** | Backend: classificazione ML, API REST, persistenza, broker MQTT, notifiche
+| **[smartcare-dashboard](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-dashboard-giuri)** | Dashboard medico in React (Vite)
+| **[IIT BioDataAcq](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-patient-app-giuri)** | App Kivy di acquisizione + layer di integrazione MQTT
+| **[wot-project-2025-2026-presentation-giuri](.)** *(questo repo)* | Sito di presentazione (GitHub Page)
 
 > ℹ️ Gli altri tre repository restano privati: contengono il codice sorgente del progetto. Questo è l'unico pensato per essere pubblico, in quanto vetrina descrittiva senza dettagli implementativi sensibili.
 
