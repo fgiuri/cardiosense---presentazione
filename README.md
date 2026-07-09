@@ -1,8 +1,8 @@
 <div align="center">
 
-<img src="assets/favicon.svg" width="80" height="80" alt="CardioSense logo">
+<img src="assets/favicon.svg" width="80" height="80" alt="SmartCare logo">
 
-# CardioSense — Presentazione (GitHub Page)
+# SmartCare — Presentazione (GitHub Page)
 
 ### Sistema IoT real-time per il monitoraggio closed-loop di pazienti con scompenso cardiaco
 
@@ -29,7 +29,7 @@
 
 ## Panoramica del progetto
 
-**CardioSense** è un sistema IoT end-to-end per il monitoraggio in tempo reale di pazienti affetti da **insufficienza cardiaca congestizia**. Il sistema acquisisce segnali fisiologici (ECG, postura tramite IMU a 6 assi, temperatura corporea) da un dispositivo wearable, li classifica tramite modelli di Machine Learning per rilevare anomalie cliniche, e mette in comunicazione diretta **paziente** e **medico** attraverso un'architettura event-driven basata su MQTT, con persistenza su database e validazione clinica delle anomalie rilevate.
+**SmartCare** è un sistema IoT end-to-end per il monitoraggio in tempo reale di pazienti affetti da **insufficienza cardiaca congestizia**. Il sistema acquisisce segnali fisiologici (ECG, postura tramite IMU a 6 assi, temperatura corporea) da un dispositivo wearable, li classifica tramite modelli di Machine Learning per rilevare anomalie cliniche, e mette in comunicazione diretta **paziente** e **medico** attraverso un'architettura event-driven basata su MQTT, con persistenza su database e validazione clinica delle anomalie rilevate.
 
 > 🩺 **Closed-loop**: ogni anomalia rilevata automaticamente viene validata da un medico (vero positivo / falso allarme); queste validazioni rientrano nel dataset di addestramento per ri-calibrare periodicamente il classificatore ECG, chiudendo il ciclo tra IA e giudizio clinico.
 
@@ -47,8 +47,8 @@ Questo repository **non contiene codice applicativo**: è la vetrina statica del
 
 | Repository | Contenuto | Stato |
 |---|---|---|
-| **[CardioSense — Backend](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-backend-giuri)** | Backend: classificazione ML, API REST, persistenza, broker MQTT, notifiche | Privato |
-| **[cardiosense-dashboard](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-dashboard-giuri)** | Dashboard medico in React (Vite) | Privato |
+| **[SmartCare — Backend](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-backend-giuri)** | Backend: classificazione ML, API REST, persistenza, broker MQTT, notifiche | Privato |
+| **[smartcare-dashboard](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-dashboard-giuri)** | Dashboard medico in React (Vite) | Privato |
 | **[IIT BioDataAcq](https://github.com/UniSalento-IDALab-IoTCourse-2025-2026/wot-project-2025-2026-patient-app-giuri)** | App Kivy di acquisizione + layer di integrazione MQTT | Privato |
 | **[wot-project-2025-2026-presentation-giuri](.)** *(questo repo)* | Sito di presentazione (GitHub Page) | **Pubblico** |
 

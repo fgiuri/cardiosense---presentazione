@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CardioSense — Monitoraggio IoT closed-loop per lo scompenso cardiaco</title>
+<title>SmartCare — Monitoraggio IoT closed-loop per lo scompenso cardiaco</title>
 <meta name="description" content="Sistema IoT real-time per il monitoraggio closed-loop di pazienti con scompenso cardiaco. Progetto d'esame — Università del Salento, IDA Lab, IIT.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -288,7 +288,7 @@
 <div class="grid-bg"></div>
 
 <div class="topbar">
-  <div class="brand"><span class="dot"></span> CARDIOSENSE</div>
+  <div class="brand"><span class="dot"></span> SMARTCARE</div>
   <nav class="navlinks" id="navlinks">
     <a href="#panoramica">Progetto</a>
     <a href="#architettura">Architettura</a>
@@ -310,7 +310,7 @@
   </svg>
   <div class="hero-content">
     <p class="eyebrow">Progetto d'esame · Internet of Things · Univ. del Salento</p>
-    <h1>Cardio<span>Sense</span></h1>
+    <h1>Smart<span>Care</span></h1>
     <p class="sub">Un sistema IoT closed-loop che ascolta il cuore di un paziente ventiquattr'ore su ventiquattro, e mette l'intelligenza artificiale e il giudizio clinico del medico a lavorare insieme, in tempo reale.</p>
     <div class="vitals">
       <div class="vital"><div class="label">ECG</div><div class="value">Normale</div></div>
@@ -326,12 +326,12 @@
 <section id="panoramica" class="wrap">
   <p class="eyebrow">01 · Il progetto</p>
   <h2>Dal battito al database, al giudizio del medico</h2>
-  <p class="lede">Lo scompenso cardiaco è una sindrome cronica che riguarda oltre 64 milioni di persone nel mondo. CardioSense sposta parte del monitoraggio dall'ospedale al domicilio, senza togliere il medico dal ciclo di decisione.</p>
+  <p class="lede">Lo scompenso cardiaco è una sindrome cronica che riguarda oltre 64 milioni di persone nel mondo. SmartCare sposta parte del monitoraggio dall'ospedale al domicilio, senza togliere il medico dal ciclo di decisione.</p>
 
   <div class="panorama-grid">
     <div>
       <p>Lo <strong>scompenso cardiaco</strong> (Heart Failure) colpisce circa il <strong>2% della popolazione italiana</strong>, una quota che sale al <strong>15% oltre gli 85 anni</strong>. I sintomi — dispnea, edemi, astenia — sono spesso aspecifici, e la diagnosi precoce di una riacutizzazione resta difficile.</p>
-      <p>CardioSense acquisisce in continuo <strong>ECG, movimento/postura (IMU a 6 assi) e temperatura corporea</strong> da un dispositivo wearable, classifica i segnali con modelli di Machine Learning per rilevare anomalie cliniche, e le presenta al medico raggruppate in episodi da validare — non righe isolate da scorrere una a una.</p>
+      <p>SmartCare acquisisce in continuo <strong>ECG, movimento/postura (IMU a 6 assi) e temperatura corporea</strong> da un dispositivo wearable, classifica i segnali con modelli di Machine Learning per rilevare anomalie cliniche, e le presenta al medico raggruppate in episodi da validare — non righe isolate da scorrere una a una.</p>
       <p>Il sistema è organizzato in tre livelli: <strong>acquisizione</strong> (wearable + app paziente), <strong>notifica</strong> (allarme in tempo reale a medico e paziente) e <strong>IA &amp; annotazione</strong> (classificazione automatica + validazione clinica).</p>
       <div class="loop-note">
         <strong>Closed-loop:</strong> ogni anomalia validata dal medico (vero positivo / falso allarme) rientra nel dataset di addestramento. Ogni notte, il classificatore ECG si ri-calibra sulle validazioni accumulate — l'IA impara dal giudizio clinico, non solo dai dati grezzi.
@@ -356,7 +356,7 @@
   <p class="lede">Tre repository, tre responsabilità nette: acquisizione, elaborazione/persistenza, presentazione. Il collante è un broker MQTT su TLS.</p>
 
   <div class="arch-frame">
-    <img src="assets/architettura.jpg" alt="Diagramma architetturale del sistema CardioSense" class="arch-img">
+    <img src="assets/architettura.jpg" alt="Diagramma architetturale del sistema SmartCare" class="arch-img">
   </div>
 </section>
 
@@ -459,7 +459,7 @@
     <div class="collab">In collaborazione con IDA Lab — Università del Salento e IIT — Istituto Italiano di Tecnologia.</div>
   </div>
   <!-- <div class="disclaimer">
-    CardioSense è un prototipo sviluppato a scopo accademico e dimostrativo. Non è certificato come dispositivo medico e non è destinato all'uso clinico reale.
+    SmartCare è un prototipo sviluppato a scopo accademico e dimostrativo. Non è certificato come dispositivo medico e non è destinato all'uso clinico reale.
   </div> -->
   <br><br>
 </footer>
